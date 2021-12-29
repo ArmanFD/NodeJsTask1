@@ -1,6 +1,7 @@
 import express from "express";
-
+import { getAllBooks, getBooksById, addBooks, updateBooks, deleteBooks } from "./controllers.js";
 
 export const router = express.Router();
-router.route("/").get().post();
-router.route("/:id").get().put().delete();
+
+router.route("/").get(getAllBooks).post(addBooks);
+router.route("/:id").get(getBooksById).put(updateBooks).delete(deleteBooks);
