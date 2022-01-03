@@ -28,7 +28,7 @@ export async function getBooksById(request, response) {
 }
 
 export async function addBooks(request, response) {
-  const id = (Math.round(Math.random() * 1000000000)).toString()
+  const id = (Math.round(Math.random() * 10000000000000)).toString()
   const db = await dataJson()
 
   const { title, author, pages, description } = request.body
