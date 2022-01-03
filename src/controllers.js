@@ -13,6 +13,9 @@ export async function getAllBooks(request, response) {
 
 export async function getBooksById(request, response) {
   const id = request.params.id
+  if (!id) {
+    return response.status(400).send('id is required')
+  }
   const db = await dataJson()
 
   const book = db.find((book) => book.id === id)
@@ -50,7 +53,11 @@ export async function addBooks(request, response) {
 }
 
 export async function updateBooks(request, response) {
-  const id = request.params.id
+  const id = request.params.id 
+  if (!id) {
+    return response.status(400).send('id is required')
+  }
+
   const db = await dataJson()
 
   const bookIndex = db.findIndex((book) => book.id === id)
@@ -80,6 +87,9 @@ export async function updateBooks(request, response) {
 
 export async function deleteBooks(request, response) {
   const id = request.params.id;
+  if (!id) {
+    return response.status(400).send('id is required')
+  }
   const db = await dataJson()
 
   const bookIndex = db.findIndex((book) => book.id === id)
